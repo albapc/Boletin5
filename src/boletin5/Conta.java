@@ -33,25 +33,27 @@ public class Conta {
     public double engadirIngreso(float suma) {
         float ingreso;
         ingreso = (float) (saldo - suma);
-        System.out.println("Saldo total ingreso: " + ingreso+" €");
+        System.out.println("Saldo total ingreso: " + ingreso + " €");
         return ingreso; //Agregar visualizar pantalla
     }
 
     public double engadirReintegro(float resto) {
         float reintegro;
         reintegro = (float) (saldo - resto);
-        System.out.println("Saldo total reintegro " + reintegro+" €");
+        System.out.println("Saldo total reintegro " + reintegro + " €");
         return reintegro; //Agregar visualizar pantalla
     }
 
     public void visualizarDatos() {
-        System.out.println("Datos cliente:\nNome: " + nomeCliente + 
-                "\nNúmero de conta: " + numConta+"\nSaldo: "+saldo+" €");
+        System.out.println("Datos cliente:\nNome: " + nomeCliente
+                + "\nNúmero de conta: " + numConta + "\nSaldo: " + saldo + " €");
     }
-    public double saldo(){
+
+    public double saldo() {
         return saldo;
     }
-    public void transferencia(){
-        
+
+    public void transferencia() {
+
     }
 }
