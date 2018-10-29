@@ -1,68 +1,74 @@
 package boletin5;
 
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class Conta {
-Scanner res= new Scanner(System.in);
+
     private String nomeCliente;
-    private int numConta;
+    private String numConta;
     private double saldo;
 
     public Conta() {
-        nomeCliente = null;
-        numConta = 0;
-        saldo = 0;
     }
 
-    public Conta(String nomeCliente, int numConta, double saldo) {
+    public Conta(String nomeCliente, String numConta, double saldo) {
         this.nomeCliente = nomeCliente;
         this.numConta = numConta;
         this.saldo = saldo;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNomeCliente(String s) {
+        nomeCliente = s;
     }
 
-    public void setNumConta(int numConta) {
-        this.numConta = numConta;
+    public void setNumConta(String s) {
+        numConta = s;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public void setSaldo(double n) {
+        saldo = n;
     }
 
-    public double engadirIngreso(float suma) {
-        float ingreso;
-        ingreso = (float) (saldo - suma);
-        System.out.println("Saldo total ingreso: " + ingreso + " €");
-        return ingreso; //Agregar visualizar pantalla
+    public String getNomeCliente() {
+        return nomeCliente;
     }
 
-    public void engadirReintegro() {
-        System.out.println("Introducir cantidad a retirar:");
-        float resto= res.nextFloat();
-        float restoTotal;
-        restoTotal = (float) (saldo - resto);
-        if(resto<saldo){
-            System.out.println("Saldo total reintegro " + resto + " €");
-        }
-        else if(resto>saldo)
-            JOptionPane.showMessageDialog(null, "Operación inválida");
-    }
-    
-
-    public void visualizarDatos() {
-        System.out.println("Datos cliente:\nNome: " + nomeCliente
-                + "\nNúmero de conta: " + numConta + "\nSaldo: " + saldo + " €");
+    public String getNumConta() {
+        return numConta;
     }
 
-    public double saldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void transferencia() {
+    public double engadirIngreso(double n) {
+        if (n < 0) {
+            System.out.println("ERRO ingreso");
+        } else {
+            saldo = saldo + n;
+        }
+        return saldo; //Agregar visualizar pantalla
+    }
 
+    public double engadirReintegro(double n) {
+        if (n < 0) {
+            System.out.println("ERRO reintegro");
+        } else if (saldo >= n) {
+            saldo -= n;
+        } else {
+            System.out.println("ERRO reintegro");
+        }
+        return saldo;
+    }
+
+    public void transferencia(Conta c, double n) {
+        if (n < 0) {
+            System.out.println("ERRO transferencia");
+        } else if (saldo >= n) {
+            engadirReintegro(n);
+            c.engadirIngreso(n);
+        } else {
+            System.out.println("ERRO transferencia");
+        }
     }
 }
