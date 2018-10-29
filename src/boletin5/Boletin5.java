@@ -11,7 +11,7 @@ public class Boletin5 {
         obxSaldo.visualizarDatos();
 
         obxSaldo.engadirIngreso(500);
-        obxSaldo.engadirReintegro(100);
+        obxSaldo.engadirReintegro(-100);
 
         totalSaldo = obxSaldo.saldo();
         System.out.println("Total actual en la cuenta: " + totalSaldo + " €");

@@ -1,7 +1,10 @@
 package boletin5;
 
-public class Conta {
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
+public class Conta {
+Scanner res= new Scanner(System.in);
     private String nomeCliente;
     private int numConta;
     private double saldo;
@@ -37,11 +40,17 @@ public class Conta {
         return ingreso; //Agregar visualizar pantalla
     }
 
-    public double engadirReintegro(float resto) {
-        float reintegro;
-        reintegro = (float) (saldo - resto);
-        System.out.println("Saldo total reintegro " + reintegro + " €");
-        return reintegro; //Agregar visualizar pantalla
+    public void engadirReintegro(float resto) {
+        System.out.println("Introducir cantidad a retirar:");
+        float re= res.nextFloat();
+        re = (float) (saldo - resto);
+        if(re>0){
+            System.out.println("Saldo total reintegro " + re + " €");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Operación inválida");
+          
+   
     }
 
     public void visualizarDatos() {
