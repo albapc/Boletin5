@@ -43,17 +43,15 @@ Scanner res= new Scanner(System.in);
     public void engadirReintegro() {
         System.out.println("Introducir cantidad a retirar:");
         float resto= res.nextFloat();
-        if(resto>0){
-            resto = (float) (saldo - resto);
+        float restoTotal;
+        restoTotal = (float) (saldo - resto);
+        if(resto<saldo){
             System.out.println("Saldo total reintegro " + resto + " €");
         }
-        else{
+        else if(resto>saldo)
             JOptionPane.showMessageDialog(null, "Operación inválida");
-        }
-            
-          
-   
     }
+    
 
     public void visualizarDatos() {
         System.out.println("Datos cliente:\nNome: " + nomeCliente
