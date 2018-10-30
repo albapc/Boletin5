@@ -1,7 +1,5 @@
 package boletin5;
 
-import java.util.Scanner;
-
 public class Conta {
 
     private String nomeCliente;
